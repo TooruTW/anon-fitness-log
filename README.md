@@ -12,7 +12,7 @@
 4. 體重記在 `metrics/bodyweight.yaml`；體組成記在 `metrics/body-composition.yaml`。
 5. 欄位說明與匿名規則見 `SCHEMA.md`。
 
-目前倉庫從真實量測起算：`metrics/` 僅有 `2026-08-15` 的體重與體組成；尚無訓練日誌。之後每次訓練新增 `logs/YYYY-MM-DD.yaml` 即可。
+目前倉庫從真實量測起算：`metrics/` 有 `2026-08-15` 的體重與體組成；訓練日誌從 `logs/2026-09-27.yaml` 起。之後每次訓練再新增 `logs/YYYY-MM-DD.yaml` 即可。
 
 ## 檔案
 

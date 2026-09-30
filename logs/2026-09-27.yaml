@@ -1,0 +1,35 @@
+date: 2026-09-27
+exercises:
+  - exercise: 槓鈴臥推 中
+    sets:
+      - { reps: 12, load: 38 }
+      - { reps: 8, load: 42.5 }
+      - { reps: 8, load: 42.5 }
+      - { reps: 8, load: 42.5 }
+  - exercise: 啞鈴側平舉
+    sets:
+      - { reps: 15, load: 4.5 }
+      - { reps: 12, load: 4.5 }
+      - { reps: 12, load: 4.5 }
+      - { reps: 12, load: 4.5 }
+  - exercise: 器材胸推 上
+    sets:
+      - { reps: 15, load: 22 }
+      - { reps: 10, load: 27 }
+      - { reps: 11, load: 27 }
+      - { reps: 8, load: 27 }
+  - exercise: 啞鈴肩推
+    sets:
+      - { reps: 12, load: 8 }
+      - { reps: 12, load: 8 }
+      - { reps: 10, load: 8 }
+      - { reps: 11, load: 8 }
+  - exercise: 器材胸推 下
+    sets:
+      - { reps: 15, load: 27 }
+      - { reps: 12, load: 45 }
+      - { reps: 10, load: 45 }
+  - exercise: 三頭 器材
+    sets:
+      - { reps: 12, load: 11 }
+      - { reps: 12, load: 11 }
