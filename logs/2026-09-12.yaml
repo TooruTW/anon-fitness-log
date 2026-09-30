@@ -1,0 +1,31 @@
+date: 2026-09-12
+exercises:
+  - exercise: 羅馬尼亞硬舉（臀部強化）
+    sets:
+      - { reps: 12, load: 30 }
+      - { reps: 10, load: 50 }
+      - { reps: 10, load: 50 }
+      - { reps: 10, load: 50 }
+  - exercise: 滑輪下拉
+    sets:
+      - { reps: 12, load: 31 }
+      - { reps: 12, load: 31 }
+      - { reps: 12, load: 36 }
+  - exercise: 器材划船
+    sets:
+      - { reps: 12, load: 80 }
+      - { reps: 12, load: 80 }
+      - { reps: 12, load: 80 }
+  - exercise: 器材肩推 中
+    sets:
+      - { reps: 15, load: 12.5 }
+      - { reps: 15, load: 12.5 }
+      - { reps: 15, load: 12.5 }
+  - exercise: 三頭 器材
+    sets:
+      - { reps: 15, load: 11 }
+      - { reps: 15, load: 11 }
+      - { reps: 15, load: 11 }
+  - exercise: 橢圓機
+    sets:
+      - { duration_s: 300 }

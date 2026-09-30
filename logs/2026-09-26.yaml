@@ -1,0 +1,34 @@
+date: 2026-09-26
+exercises:
+  - exercise: 滑輪下拉
+    sets:
+      - { reps: 12, load: 36 }
+      - { reps: 12, load: 36 }
+      - { reps: 15, load: 33 }
+      - { reps: 12, load: 33 }
+  - exercise: 器材划船
+    sets:
+      - { reps: 10, load: 70 }
+      - { reps: 12, load: 55 }
+      - { reps: 12, load: 55 }
+  - exercise: Cable face pull
+    sets:
+      - { reps: 15, load: 7.5 }
+      - { reps: 15, load: 7.5 }
+      - { reps: 15, load: 7.5 }
+  - exercise: 二頭 器材
+    sets:
+      - { reps: 15, load: 11 }
+      - { reps: 12, load: 11 }
+  - exercise: 橢圓機
+    sets:
+      - { duration_s: 300 }
+  - exercise: 間歇跑
+    sets:
+      - { duration_s: 1200 }
+  - exercise: 啞鈴划船
+    sets:
+      - { reps: 12, load: 22.5 }
+      - { reps: 15, load: 22.5 }
+      - { reps: 12, load: 22.5 }
+      - { reps: 12, load: 22.5 }

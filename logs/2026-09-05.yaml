@@ -1,0 +1,24 @@
+date: 2026-09-05
+exercises:
+  - exercise: 槓鈴臥推 中
+    sets:
+      - { reps: 10, load: 36 }
+      - { reps: 10, load: 36 }
+      - { reps: 10, load: 36 }
+      - { reps: 10, load: 18 }
+  - exercise: 深蹲
+    sets:
+      - { reps: 12, load: 50 }
+      - { reps: 10, load: 50 }
+      - { reps: 10, load: 50 }
+      - { reps: 10, load: 50 }
+  - exercise: 器材划船
+    sets:
+      - { reps: 12, load: 70 }
+      - { reps: 12, load: 85 }
+      - { reps: 12, load: 85 }
+      - { reps: 15, load: 40 }
+  - exercise: 橢圓機
+    sets:
+      - { duration_s: 300 }
+      - { duration_s: 1200 }

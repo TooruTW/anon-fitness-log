@@ -51,11 +51,12 @@ GitHub 帳號會顯示為擁有者。不要為了對應帳號而把名字寫進�
 | --- | --- |
 | `date` | 與檔名相同 |
 | `exercises[].exercise` | 動作名稱 |
-| `exercises[].sets[].reps` | 次數 |
-| `exercises[].sets[].load` | 該組重量，公斤。來源若是磅，先換算 |
+| `exercises[].sets[].reps` | 次數（肌力組） |
+| `exercises[].sets[].load` | 該組重量，公斤。來源若是磅，先換算（肌力組） |
+| `exercises[].sets[].duration_s` | 該組持續秒數。有氧／計時項目用；與 `reps`+`load` 擇一，不要兩種混在同一組 |
 | `exercises[].sets[].rpe` | 自覺用力程度，1–10，可省略 |
 
-同一天一個檔。沒練的日子不要補假數據。
+同一天一個檔。沒練的日子不要補假數據。肌力組寫 `reps` 與 `load`；橢圓機、間歇跑等計時組只寫 `duration_s`，不要編造次數或重量。
 
 ## metrics/bodyweight.yaml
 

@@ -1,0 +1,23 @@
+date: 2026-09-15
+exercises:
+  - exercise: 啞鈴臥推 中
+    sets:
+      - { reps: 12, load: 20 }
+      - { reps: 15, load: 20 }
+      - { reps: 15, load: 20 }
+      - { reps: 15, load: 20 }
+  - exercise: 伏地挺身
+    sets:
+      - { reps: 12, load: 0 }
+      - { reps: 12, load: 0 }
+      - { reps: 12, load: 0 }
+  - exercise: 啞鈴側平舉
+    sets:
+      - { reps: 15, load: 2.5 }
+      - { reps: 15, load: 2.5 }
+      - { reps: 15, load: 2.5 }
+  - exercise: 二頭 啞鈴
+    sets:
+      - { reps: 12, load: 5 }
+      - { reps: 10, load: 7.5 }
+      - { reps: 12, load: 7.5 }
