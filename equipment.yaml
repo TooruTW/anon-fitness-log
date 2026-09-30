@@ -1,0 +1,8 @@
+# 居家可用器材。不寫住址、店名、品牌。
+venue: home
+items:
+  - name: 啞鈴
+    load_total_kg: 20 # 可用總重 20 kg；成對／單邊拆分未知
+  - name: 啞鈴床
+  - name: 瑜珈墊
+  - name: 彈力繩
