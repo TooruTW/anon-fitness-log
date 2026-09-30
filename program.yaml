@@ -1,0 +1,12 @@
+name: general-strength
+days:
+  - id: lower
+    exercises:
+      - squat
+      - romanian-deadlift
+      - walking-lunge
+  - id: upper
+    exercises:
+      - bench-press
+      - barbell-row
+      - overhead-press

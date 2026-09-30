@@ -1,0 +1,15 @@
+date: 2026-09-22
+exercises:
+  - exercise: squat
+    sets:
+      - { reps: 8, load: 40, rpe: 6 }
+      - { reps: 8, load: 40, rpe: 7 }
+      - { reps: 6, load: 40, rpe: 8 }
+  - exercise: romanian-deadlift
+    sets:
+      - { reps: 8, load: 30, rpe: 6 }
+      - { reps: 8, load: 30, rpe: 7 }
+  - exercise: walking-lunge
+    sets:
+      - { reps: 8, load: 10, rpe: 6 }
+      - { reps: 8, load: 10, rpe: 7 }

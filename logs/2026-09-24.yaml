@@ -1,0 +1,15 @@
+date: 2026-09-24
+exercises:
+  - exercise: bench-press
+    sets:
+      - { reps: 8, load: 30, rpe: 6 }
+      - { reps: 8, load: 30, rpe: 7 }
+      - { reps: 5, load: 30, rpe: 8 }
+  - exercise: barbell-row
+    sets:
+      - { reps: 8, load: 30, rpe: 6 }
+      - { reps: 8, load: 30, rpe: 7 }
+  - exercise: overhead-press
+    sets:
+      - { reps: 8, load: 20, rpe: 7 }
+      - { reps: 6, load: 20, rpe: 8 }
