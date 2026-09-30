@@ -1,3 +1,10 @@
 units:
   load: kg
   bodyweight: kg
+accept:
+  load: [kg, lb]
+  bodyweight: [kg, lb]
+lb_to_kg: 0.45359237
+decimals:
+  load: 1
+  bodyweight: 1

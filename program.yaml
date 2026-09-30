@@ -1,12 +1,12 @@
-name: general-strength
+name: 一般肌力
 days:
-  - id: lower
+  - id: 下肢
     exercises:
-      - squat
-      - romanian-deadlift
-      - walking-lunge
-  - id: upper
+      - 深蹲
+      - 羅馬尼亞硬舉
+      - 行走弓步
+  - id: 上肢
     exercises:
-      - bench-press
-      - barbell-row
-      - overhead-press
+      - 槓鈴臥推
+      - 槓鈴划船
+      - 肩推

@@ -1,15 +1,15 @@
 date: 2026-09-22
 exercises:
-  - exercise: squat
+  - exercise: 深蹲
     sets:
       - { reps: 8, load: 40, rpe: 6 }
       - { reps: 8, load: 40, rpe: 7 }
       - { reps: 6, load: 40, rpe: 8 }
-  - exercise: romanian-deadlift
+  - exercise: 羅馬尼亞硬舉
     sets:
       - { reps: 8, load: 30, rpe: 6 }
       - { reps: 8, load: 30, rpe: 7 }
-  - exercise: walking-lunge
+  - exercise: 行走弓步
     sets:
       - { reps: 8, load: 10, rpe: 6 }
       - { reps: 8, load: 10, rpe: 7 }
