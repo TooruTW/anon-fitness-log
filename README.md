@@ -9,10 +9,10 @@
 1. 複製這個倉庫，或只複製檔案結構。
 2. 課表改 `program.yaml`。重量與體重一律記公斤，規則在 `profile.yaml`。
 3. 每次訓練新增 `logs/YYYY-MM-DD.yaml`。
-4. 體重記在 `metrics/bodyweight.yaml`。
+4. 體重記在 `metrics/bodyweight.yaml`；體組成記在 `metrics/body-composition.yaml`。
 5. 欄位說明與匿名規則見 `SCHEMA.md`。
 
-範例日期是虛構的，重量也刻意偏低，用來示範格式，不是訓練目標。
+目前倉庫從真實量測起算：`metrics/` 僅有 `2026-08-15` 的體重與體組成；尚無訓練日誌。之後每次訓練新增 `logs/YYYY-MM-DD.yaml` 即可。
 
 ## 檔案
 
@@ -22,10 +22,11 @@
 | `program.yaml` | 課表裡的動作名稱 |
 | `logs/` | 單日訓練 |
 | `metrics/bodyweight.yaml` | 體重 |
+| `metrics/body-composition.yaml` | 體組成 |
 | `SCHEMA.md` | 欄位與什麼不該寫 |
 
 ## 匿名
 
-檔案裡不要寫真實姓名、暱稱、社群帳號、照片、住址、認得出的健身房店名，或任何能連回特定人的備註。日期、動作、組數、次數、重量、RPE、體重可以留。
+檔案裡不要寫真實姓名、暱稱、社群帳號、照片、住址、認得出的健身房店名，或任何能連回特定人的備註。日期、動作、組數、次數、重量、RPE、體重、體組成數值可以留。
 
 GitHub 帳號會顯示為倉庫擁有者，這無法從檔案裡拿掉。匿名指的是檔案內容。

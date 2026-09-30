@@ -8,6 +8,7 @@
 - 動作名稱（通用名稱，例如 `深蹲`、`槓鈴臥推`）
 - 組數、次數、重量、RPE
 - 體重
+- 體組成數值（體脂、皮下脂肪、骨骼肌、內臟脂肪等級、基礎代謝、體年齡、BMI）
 - 與數據有關的簡短註記（例如 `最後一組做到 8 下`）
 
 ## 不要寫
@@ -64,3 +65,26 @@ GitHub 帳號會顯示為擁有者。不要為了對應帳號而把名字寫進�
 | --- | --- |
 | `date` | `YYYY-MM-DD` |
 | `bodyweight` | 當天體重 |
+
+## metrics/body-composition.yaml
+
+一份清單，有量測才記，一天一筆。百分比與公斤並存時各自寫欄位，不要另寫單位字串。不要寫裝置狀態文案（例如「偏高」「標準」）。體重仍只記在 `metrics/bodyweight.yaml`。
+
+| 欄位 | 說明 |
+| --- | --- |
+| `date` | `YYYY-MM-DD` |
+| `body_fat_percent` | 體脂率 |
+| `body_fat_kg` | 體脂重，公斤 |
+| `subcutaneous_fat_percent` | 皮下脂肪率 |
+| `subcutaneous_fat.arms_percent` | 手臂皮下脂肪率 |
+| `subcutaneous_fat.trunk_percent` | 軀幹皮下脂肪率 |
+| `subcutaneous_fat.legs_percent` | 腿部皮下脂肪率 |
+| `skeletal_muscle_percent` | 骨骼肌率 |
+| `skeletal_muscle_kg` | 骨骼肌重，公斤 |
+| `skeletal_muscle.arms_percent` | 手臂骨骼肌率 |
+| `skeletal_muscle.trunk_percent` | 軀幹骨骼肌率 |
+| `skeletal_muscle.legs_percent` | 腿部骨骼肌率 |
+| `visceral_fat_level` | 內臟脂肪等級 |
+| `bmr_kcal` | 基礎代謝，kcal |
+| `body_age` | 體年齡 |
+| `bmi` | BMI |
