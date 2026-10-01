@@ -1,0 +1,321 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>下一練</title>
+  <style>
+    :root {
+      --bg: #f4f4f5;
+      --card: #ffffff;
+      --text: #18181b;
+      --muted: #71717a;
+      --line: #e4e4e7;
+      --accent: #2563eb;
+      --accent-soft: #dbeafe;
+      --ok: #16a34a;
+      --ok-soft: #dcfce7;
+      --skip: #a1a1aa;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #09090b;
+        --card: #18181b;
+        --text: #f4f4f5;
+        --muted: #a1a1aa;
+        --line: #27272a;
+        --accent: #60a5fa;
+        --accent-soft: #1e3a5f;
+        --ok: #4ade80;
+        --ok-soft: #14361f;
+        --skip: #52525b;
+      }
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font: 15px/1.5 system-ui, -apple-system, "Noto Sans TC", sans-serif;
+    }
+    main { max-width: 480px; margin: 0 auto; padding: 16px 16px 40px; }
+    button, input { font: inherit; color: inherit; }
+
+    header h1 { margin: 0; font-size: 26px; }
+    .meta { color: var(--muted); font-size: 13px; margin: 2px 0 12px; }
+    .note { background: var(--card); border: 1px solid var(--line); border-radius: 12px; padding: 10px 12px; margin-bottom: 8px; font-size: 13px; }
+    .note b { display: block; font-size: 12px; color: var(--muted); font-weight: 600; }
+
+    .bar { position: sticky; top: 0; z-index: 1; background: var(--bg); padding: 8px 0; margin: 8px 0; }
+    .toggle { display: flex; background: var(--line); border-radius: 10px; padding: 3px; }
+    .toggle button { flex: 1; border: 0; background: transparent; padding: 8px; border-radius: 8px; font-weight: 600; }
+    .toggle button.on { background: var(--card); color: var(--accent); }
+    .progress { display: flex; justify-content: space-between; align-items: center; font-size: 13px; color: var(--muted); margin-top: 6px; }
+    .progress button { border: 0; background: none; color: var(--muted); text-decoration: underline; padding: 4px 0; font-size: 13px; }
+
+    h2 { font-size: 15px; margin: 20px 0 8px; display: flex; justify-content: space-between; }
+    h2 small { color: var(--muted); font-weight: 400; }
+
+    .ex { background: var(--card); border: 1px solid var(--line); border-radius: 12px; padding: 12px; margin-bottom: 8px; }
+    .ex.done { border-color: var(--ok); background: var(--ok-soft); }
+    .ex.skipped { opacity: .55; }
+    .ex.skipped .ex-name { text-decoration: line-through; }
+    .ex-head { display: flex; justify-content: space-between; gap: 8px; align-items: baseline; }
+    .ex-name { font-weight: 600; font-size: 16px; }
+    .rest { color: var(--muted); font-size: 12px; white-space: nowrap; }
+    .ex p { margin: 8px 0 0; color: var(--muted); font-size: 13px; }
+
+    .warm { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 8px; }
+    .warm span { border: 1px dashed var(--line); color: var(--muted); border-radius: 6px; padding: 2px 8px; font-size: 13px; }
+
+    .set-row { display: flex; align-items: center; gap: 6px; margin-top: 8px; font-size: 13px; color: var(--muted); }
+    .set-row .idx, .set-row .unit { flex: none; white-space: nowrap; }
+    .set-row .idx { min-width: 3.6em; }
+    .set-row input {
+      width: 4.2em; min-width: 0; flex: 0 1 auto; padding: 6px; border: 1px solid var(--line); border-radius: 8px;
+      background: var(--bg); text-align: center; font-variant-numeric: tabular-nums; font-size: 16px;
+    }
+    .set-row input::placeholder { font-size: 12px; }
+    .set-tools { display: flex; gap: 6px; margin-top: 8px; }
+    .set-tools button { border: 1px solid var(--line); background: none; border-radius: 8px; padding: 2px 10px; color: var(--muted); font-size: 13px; }
+
+    .actions { display: flex; gap: 8px; margin-top: 12px; }
+    .actions button { flex: 1; border: 1px solid var(--line); background: var(--bg); border-radius: 8px; padding: 8px; font-weight: 600; }
+    .actions .ok.on { background: var(--ok); border-color: var(--ok); color: #fff; }
+    .actions .skip.on { background: var(--skip); border-color: var(--skip); color: #fff; }
+
+    .export { margin-top: 24px; }
+    .export > button { width: 100%; border: 0; border-radius: 10px; padding: 12px; background: var(--accent); color: #fff; font-weight: 600; }
+    .export-out { margin-top: 12px; }
+    .export-out textarea {
+      width: 100%; height: 260px; padding: 10px; border: 1px solid var(--line); border-radius: 10px;
+      background: var(--card); color: var(--text); font: 13px/1.5 ui-monospace, Consolas, monospace; resize: vertical;
+    }
+    .export-tools { display: flex; gap: 8px; margin-top: 8px; }
+    .export-tools button { flex: 1; border: 1px solid var(--line); background: var(--card); border-radius: 8px; padding: 8px; font-weight: 600; }
+  </style>
+</head>
+<body>
+  <main id="app"></main>
+
+  <script src="trainingData/nextTrain.js"></script>
+  <script>
+    const app = document.getElementById('app');
+    // 換新菜單（basedOn 或 day 不同）就用新的 key，不沿用舊紀錄
+    const STORE_KEY = `nextTrain:${nextTrain.basedOn}:${nextTrain.day}`;
+
+    // state: { mode, items: { [exerciseId]: { sets, status } } }
+    // exerciseId = `${mode}-${phase 索引}-${動作索引}`，健身房與居家各記各的
+    function load() {
+      try { return JSON.parse(localStorage.getItem(STORE_KEY)) || null; } catch { return null; }
+    }
+    function save() {
+      try { localStorage.setItem(STORE_KEY, JSON.stringify(state)); } catch {}
+    }
+    let state = load() || { mode: nextTrain.venue === 'home' ? 'home' : 'gym', items: {} };
+
+    const esc = s => String(s).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+
+    // 居家模式：有 home 就用 home 覆蓋，沒有就沿用原動作
+    function planFor(base) {
+      return state.mode === 'home' && base.home
+        ? { ...base, ...base.home, warmupSets: undefined }
+        : base;
+    }
+
+    function itemFor(id, plan) {
+      if (!state.items[id]) {
+        state.items[id] = { sets: plan.sets.map(s => ({ ...s })), status: null };
+      }
+      return state.items[id];
+    }
+
+    function fmtWarm(s) {
+      return `${s.reps} 下 · ${s.load ? `${s.load} kg` : '徒手'}`;
+    }
+
+    function setRow(id, i, s, plan) {
+      const field = (key, unit, placeholder = '') => `
+        <input type="number" inputmode="decimal" min="0" step="any"
+          data-id="${id}" data-i="${i}" data-key="${key}"
+          value="${s[key] ?? ''}" placeholder="${placeholder}"><span class="unit">${unit}</span>`;
+      const loadHint = plan.suggestedLoadPerHand ? `${plan.suggestedLoadPerHand.join('–')}/手` : '自評';
+      const body = 'duration_s' in s
+        ? field('duration_s', '秒')
+        : field('reps', plan.perSide ? '下／邊' : '下') + field('load', 'kg', loadHint);
+      return `<div class="set-row"><span class="idx">第 ${i + 1} 組</span>${body}</div>`;
+    }
+
+    function renderExercise(base, pi, ei) {
+      const plan = planFor(base);
+      const id = `${state.mode}-${pi}-${ei}`;
+      const item = itemFor(id, plan);
+      return `
+        <div class="ex ${item.status || ''}">
+          <div class="ex-head">
+            <span class="ex-name">${esc(plan.exercise)}</span>
+            ${plan.rest_s ? `<span class="rest">休息 ${plan.rest_s} 秒</span>` : ''}
+          </div>
+          ${plan.warmupSets ? `<div class="warm">${plan.warmupSets.map(s => `<span>熱身 ${esc(fmtWarm(s))}</span>`).join('')}</div>` : ''}
+          ${item.sets.map((s, i) => setRow(id, i, s, plan)).join('')}
+          <div class="set-tools">
+            <button data-act="add" data-id="${id}">＋ 一組</button>
+            ${item.sets.length > 1 ? `<button data-act="remove" data-id="${id}">－ 一組</button>` : ''}
+          </div>
+          ${plan.notes ? `<p>${esc(plan.notes)}</p>` : ''}
+          <div class="actions">
+            <button class="ok ${item.status === 'done' ? 'on' : ''}" data-act="done" data-id="${id}">完成</button>
+            <button class="skip ${item.status === 'skipped' ? 'on' : ''}" data-act="skipped" data-id="${id}">放棄</button>
+          </div>
+        </div>`;
+    }
+
+    // 依目前場地逐一列出動作：[{ id, plan }]
+    function currentExercises() {
+      return nextTrain.phases.flatMap((p, pi) => p.exercises.map((base, ei) => {
+        const plan = planFor(base);
+        const id = `${state.mode}-${pi}-${ei}`;
+        itemFor(id, plan);
+        return { id, plan };
+      }));
+    }
+
+    const today = () => new Date().toLocaleDateString('sv'); // YYYY-MM-DD（本地時區）
+
+    // 輸出成 logs/YYYY-MM-DD.yaml 格式：只寫完成的動作，放棄的列在註解
+    function toYaml() {
+      const done = [], skipped = [];
+      for (const { id, plan } of currentExercises()) {
+        const item = state.items[id];
+        (item.status === 'done' ? done : skipped).push({ plan, item });
+      }
+      const lines = [
+        `# ${nextTrain.day}（${state.mode === 'home' ? '居家' : '健身房'}）`,
+        ...(skipped.length ? [`# 放棄：${skipped.map(x => x.plan.exercise).join('、')}`] : []),
+        `date: ${today()}`,
+      ];
+      if (!done.length) return [...lines, 'exercises: []'].join('\n') + '\n';
+      lines.push('exercises:');
+      for (const { plan, item } of done) {
+        const sets = item.sets.flatMap(s => {
+          if ('duration_s' in s) return s.duration_s == null ? [] : [`      - { duration_s: ${s.duration_s} }`];
+          if (s.reps == null) return [];
+          return s.load == null
+            ? [`      - { reps: ${s.reps}, load: null } # 重量未填`]
+            : [`      - { reps: ${s.reps}, load: ${s.load} }`];
+        });
+        lines.push(`  - exercise: ${plan.exercise}`, sets.length ? '    sets:' : '    sets: []', ...sets);
+      }
+      return lines.join('\n') + '\n';
+    }
+
+    let exportText = null; // 只留在畫面上，不存 localStorage
+
+    function render() {
+      const t = nextTrain;
+      const sections = t.phases.map((p, pi) => `
+        <section>
+          <h2>${esc(p.phase)} ${p.minutes ? `<small>${p.minutes} 分</small>` : ''}</h2>
+          ${p.exercises.map((ex, ei) => renderExercise(ex, pi, ei)).join('')}
+        </section>`).join('');
+
+      const current = Object.entries(state.items).filter(([id]) => id.startsWith(state.mode + '-'));
+      const total = t.phases.reduce((n, p) => n + p.exercises.length, 0);
+      const done = current.filter(([, v]) => v.status === 'done').length;
+      const skipped = current.filter(([, v]) => v.status === 'skipped').length;
+
+      app.innerHTML = `
+        <header>
+          <h1>${esc(t.day)}</h1>
+          <div class="meta">依 ${esc(t.basedOn)} 前紀錄 · 約 ${t.estimatedMinutes} 分鐘 · 次選 ${esc(t.alternative)}</div>
+          <div class="note"><b>理由</b>${esc(t.reason)}</div>
+          <div class="note"><b>限制</b>${esc(t.limitations)}</div>
+        </header>
+        <div class="bar">
+          <div class="toggle">
+            <button data-mode="gym" class="${state.mode === 'gym' ? 'on' : ''}">健身房</button>
+            <button data-mode="home" class="${state.mode === 'home' ? 'on' : ''}">居家</button>
+          </div>
+          <div class="progress">
+            <span>完成 ${done} / ${total}${skipped ? ` · 放棄 ${skipped}` : ''}</span>
+            <button data-act="reset">重設</button>
+          </div>
+        </div>
+        ${sections}
+        <div class="export">
+          <button data-act="export">輸出訓練單</button>
+          ${exportText == null ? '' : `
+            <div class="export-out">
+              <textarea readonly>${esc(exportText)}</textarea>
+              <div class="export-tools">
+                <button data-act="copy">複製</button>
+              </div>
+            </div>`}
+        </div>
+      `;
+      save();
+    }
+
+    function clearExport() {
+      exportText = null;
+      document.querySelector('.export-out')?.remove();
+    }
+
+    // 輸入時只存不重繪，避免手機鍵盤收起
+    app.addEventListener('input', e => {
+      const { id, i, key } = e.target.dataset;
+      if (!id) return;
+      const v = e.target.value;
+      state.items[id].sets[i][key] = v === '' ? null : Number(v);
+      save();
+      clearExport(); // 數字改了，舊的輸出就不準了
+    });
+
+    app.addEventListener('click', e => {
+      const el = e.target.closest('button');
+      if (!el) return;
+      const { mode, act, id } = el.dataset;
+
+      if (act === 'export') {
+        const pending = currentExercises().map(x => state.items[x.id]).filter(it => !it.status);
+        if (pending.length && !confirm(
+          `還有 ${pending.length} 個動作沒有標記完成或放棄。\n確定要輸出嗎？沒完成的會全部標記為放棄。`
+        )) return;
+        pending.forEach(it => { it.status = 'skipped'; });
+        exportText = toYaml();
+        render();
+        document.querySelector('.export-out').scrollIntoView({ behavior: 'smooth', block: 'center' });
+        return;
+      }
+      if (act === 'copy') {
+        const ta = document.querySelector('.export-out textarea');
+        (navigator.clipboard?.writeText(ta.value) ?? Promise.reject())
+          .catch(() => { ta.select(); document.execCommand('copy'); })
+          .then(() => { el.textContent = '已複製'; });
+        return;
+      }
+
+      clearExport();
+      if (mode) {
+        state.mode = mode;
+      } else if (act === 'reset') {
+        if (!confirm('清除這份菜單的所有修改與完成狀態？')) return;
+        state = { mode: state.mode, items: {} };
+      } else if (act === 'add') {
+        const sets = state.items[id].sets;
+        sets.push({ ...sets[sets.length - 1] });
+      } else if (act === 'remove') {
+        state.items[id].sets.pop();
+      } else if (act === 'done' || act === 'skipped') {
+        const item = state.items[id];
+        item.status = item.status === act ? null : act;
+      } else {
+        return;
+      }
+      render();
+    });
+
+    render();
+  </script>
+</body>
+</html>

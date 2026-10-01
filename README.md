@@ -13,6 +13,10 @@
 5. 體重記在 `metrics/bodyweight.yaml`；體組成記在 `metrics/body-composition.yaml`。
 6. 欄位說明與匿名規則見 `SCHEMA.md`。
 7. 產生訓練菜單時依 [`docs/workout-menu-principles.md`](docs/workout-menu-principles.md)。
+8. 下一練菜單寫在 `trainingData/nextTrain.js`，用瀏覽器開 `index.html` 執行：
+   - 每組可改次數、重量或秒數，每個動作標「完成」或「放棄」。修改存在瀏覽器 localStorage，換菜單（`basedOn` 或 `day` 不同）會重新開始。
+   - 練完按最下方「輸出訓練單」。還有動作沒標記時會先確認，確定後一律標為放棄。
+   - 輸出為 `logs/YYYY-MM-DD.yaml` 格式：只寫完成的動作，放棄的列在開頭註解，未填重量寫 `load: null`。按「複製」後貼給 AI 整理、再寫入 `logs/`。
 
 目前倉庫從真實量測起算：`metrics/` 有 `2026-08-15` 的體重與體組成；訓練日誌有 `logs/2026-09-05.yaml`、`logs/2026-09-12.yaml`、`logs/2026-09-15.yaml`、`logs/2026-09-26.yaml`（上肢拉／有氧）與 `logs/2026-09-27.yaml`（上肢推）。之後每次訓練再新增 `logs/YYYY-MM-DD.yaml` 即可。
 
@@ -28,6 +32,8 @@
 | `metrics/body-composition.yaml` | 體組成 |
 | `SCHEMA.md` | 欄位與什麼不該寫 |
 | `docs/workout-menu-principles.md` | 產生訓練菜單的原則 |
+| `trainingData/nextTrain.js` | 下一練菜單資料 |
+| `index.html` | 手機版菜單頁：調整、標記完成／放棄、輸出日誌 |
 
 ## 匿名
 
